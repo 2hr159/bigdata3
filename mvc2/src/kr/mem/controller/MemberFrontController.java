@@ -22,23 +22,23 @@ public class MemberFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
-		// 1. ¾î¶²¿äÃ»ÀÎÁö ÆÄ¾ÇÇÏ´Â ÀÛ¾÷ -> *.do
+		// 1. ï¿½î¶²ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¾ï¿½ï¿½Ï´ï¿½ ï¿½Û¾ï¿½ -> *.do
 		String reqUrl = request.getRequestURI();
 		System.out.println(reqUrl);
 		String ctxPath = request.getContextPath();
 		System.out.println(ctxPath);
-		// Å¬¶óÀÌ¾ğÆ®°¡ ¿äÃ»ÇÑ ¸í·É
+		// Å¬ï¿½ï¿½ï¿½Ì¾ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½
 		String command = reqUrl.substring(ctxPath.length());
 		System.out.println(command);
 
-		// °¢ ¿äÃ»¿¡ µû¶ó Ã³¸®ÇÏ±â(ºĞ±âÀÛ¾÷)
+		// ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½(ï¿½Ğ±ï¿½ï¿½Û¾ï¿½)
 		Controller controller = null;
 		MemberDAO dao = new MemberDAO();
 		String nextView = null;
 		HandlerMapping mappings = new HandlerMapping();
         controller=mappings.getController(command);
         nextView=controller.requestHandle(request, response);
-		// ÇÚµé·¯ ¸ÅÇÎ
+		// ï¿½Úµé·¯ ï¿½ï¿½ï¿½ï¿½
 		// /list.do---->memberlistController
 		// /insert.do--->memberinsertcontroller
 		// /insertForm.do--->memberInsertFormController
@@ -62,7 +62,7 @@ public class MemberFrontController extends HttpServlet {
 //
 //		}
 
-		// view ÆäÀÌÁö·Î ¿¬µ¿ÇÏ´Â ºÎºĞ-------------------------------------------
+		// view í˜ì´ì§€ ì´ë™í–ˆìŠµë‹ˆë‹¤-------------------------------------------
 		if (nextView != null) {
 			if (nextView.indexOf("redirect:") != -1) {
 				String[] sp = nextView.split(":"); // sp[0]:sp[1]
